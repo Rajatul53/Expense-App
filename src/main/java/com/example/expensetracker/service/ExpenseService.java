@@ -4,6 +4,7 @@ import com.example.expensetracker.entity.ExpenseEntity;
 import com.example.expensetracker.repo.ExpenseRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,5 +31,9 @@ public class ExpenseService {
 
     public void deleteById(Long id) {
          expenseRepository.deleteById(id);
+    }
+
+    public List<ExpenseEntity> filterByDate(LocalDateTime startDate, LocalDateTime endDate) {
+        return expenseRepository.findByCreatedAtBetween(startDate,endDate);
     }
 }

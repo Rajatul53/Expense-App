@@ -1,9 +1,11 @@
 package com.example.expensetracker.controller;
 
 import com.example.expensetracker.entity.ExpenseEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import com.example.expensetracker.service.ExpenseService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +28,13 @@ public class ExpenseController {
         return expenseService.createExpense(expense);
     }
 
+    @GetMapping("/filterByRange/{startDate}/{endDate}")
+    public List<ExpenseEntity> filterByDate(
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
+
+        return expenseService.filterByDate(startDate, endDate);
+    }
     @GetMapping("/{id}")
     public Optional<ExpenseEntity> getExpenseById(@PathVariable Long id) {
         return expenseService.getExpenseById(id);
