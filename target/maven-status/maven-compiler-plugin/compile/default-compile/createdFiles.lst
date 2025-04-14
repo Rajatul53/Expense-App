@@ -1,0 +1,5 @@
+com/example/expensetracker/service/expenseService.class
+com/example/expensetracker/controller/expenseController.class
+com/example/expensetracker/entity/expenseEntity.class
+com/example/expensetracker/ExpensetrackerApplication.class
+com/example/expensetracker/repo/expenseRepository.class
